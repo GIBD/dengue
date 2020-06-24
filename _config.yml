@@ -1,1 +1,13 @@
-theme: jekyll-theme-slate
+name: "DENGUE GIBD"
+theme: jekyll-theme-cayman
+navbar:
+  title: "DENGUE GIBD"
+  left:
+    - text: "Inicio"
+      href: index.html
+    - text: "Argentina"
+      href: Argentina.html  
+    - text: "Entre Rios"
+      href: Entre-Rios.html  
+output_dir: "docs"
+exclude: "data"
