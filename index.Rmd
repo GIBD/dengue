@@ -38,6 +38,6 @@ Este proyecto fue creado con el objetivo de compartir información sobre la evol
 ### [Grupo de Investigación en Bases de Datos](http://www.frcu.utn.edu.ar/gibd/)
 
 <a href = "http://www.frcu.utn.edu.ar/gibd/">
-![](images/logo.jpg)
+![](images/logo_frcu_chico.png)
 </a>
 </div>
