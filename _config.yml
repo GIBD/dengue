@@ -9,5 +9,5 @@ navbar:
       href: Argentina.html  
     - text: "Entre Rios"
       href: Entre-Rios.html  
-output_dir: "docs"
+output_dir: ""
 exclude: "data"
