@@ -1,0 +1,7 @@
+site_name: GIBD - Dengue
+nav:
+    - Inicio: index.md
+    - Sudamérica: Sudamerica.md
+    - Argentina: Argentina.md
+    - Entre Ríos: EntreRios.md
+theme: readthedocs
