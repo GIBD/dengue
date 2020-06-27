@@ -16,6 +16,9 @@ from datetime import datetime as dt
 ##external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+app.title = 'Dengue GIBD'
+
 server = app.server
 
 colors = {"background": "#111111", "text": "#7FDBFF"}
