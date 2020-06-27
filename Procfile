@@ -1,1 +1,1 @@
-web: gunicorn denguegibd.wsgi --log-file -
+web: gunicorn app:server --log-file -
