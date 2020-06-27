@@ -24,10 +24,10 @@ colors = {
 }
 
 ####DATOS OPS
-casosDenguePorAño=pd.read_csv('data\dengue_Argentina_OPS_2014_2020.csv')
+casosDenguePorAño=pd.read_csv('https://github.com/GIBD/data_dengue/blob/master/dengue_Argentina_OPS_2014_2020.csv')
 
 ###DATOS BOLETINES
-casosDengue= pd.read_csv('data\dengue_casos.csv')
+casosDengue= pd.read_csv('https://github.com/GIBD/data_dengue/blob/master/dengue_casos.csv')
 casosDengueInvertido=casosDengue.iloc[::-1]
 
 
