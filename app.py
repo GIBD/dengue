@@ -360,7 +360,7 @@ def render_content(tab):
         figProvinciasIA = px.line(
             dengueProvincias, x="FechaReporte", y="IA", color="Provincia", height=650
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Incidencia Acumulada"
+            xaxis_title="Fecha de Reporte", yaxis_title="Incidencia Acumulada", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
