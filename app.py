@@ -389,7 +389,7 @@ def render_content(tab):
             color="Provincia",
             height=650,
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos autóctonos confirmados"
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos autóctonos confirmados", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -428,7 +428,7 @@ def render_content(tab):
             color="Provincia",
             height=650,
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos importados confirmados"
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos importados confirmados", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -457,7 +457,7 @@ def render_content(tab):
             color="Provincia",
             height=650,
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos en investigación"
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos en investigación", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -482,7 +482,7 @@ def render_content(tab):
             y="Total notificados para dengue",
             color="Provincia",
             height=650,
-        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos notificados")
+        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos notificados", legend={'traceorder':'normal'})
         return html.Div(
             [
                 dbc.Col(
@@ -509,7 +509,7 @@ def render_content(tab):
             y="AcumFallecidos",
             color="Provincia",
             height=650,
-        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Fallecidos")
+        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Fallecidos", legend={'traceorder':'normal'})
         return html.Div(
             [
                 dbc.Col(
@@ -537,7 +537,7 @@ def render_content(tab):
         figRegionAutoctonos = px.line(
             dengueRegiones, x="FechaReporte", y="Autoctonos", color="Provincia"
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos autóctonos confirmados"
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos autóctonos confirmados", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -572,7 +572,7 @@ def render_content(tab):
         figRegionImportados = px.line(
             dengueRegiones, x="FechaReporte", y="Importados", color="Provincia"
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos importados confirmados"
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos importados confirmados", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -597,7 +597,7 @@ def render_content(tab):
         figRegionEnInv = px.line(
             dengueRegiones, x="FechaReporte", y="Total en Inv", color="Provincia"
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos en investigación"
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos en investigación", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -621,7 +621,7 @@ def render_content(tab):
             x="FechaReporte",
             y="Total notificados para dengue",
             color="Provincia",
-        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos notificados")
+        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos notificados", legend={'traceorder':'normal'})
         return html.Div(
             [
                 dbc.Col(
@@ -644,7 +644,7 @@ def render_content(tab):
     elif tab == "tab-5":
         figRegionFallecidos = px.line(
             dengueRegiones, x="FechaReporte", y="AcumFallecidos", color="Provincia"
-        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Fallecidos")
+        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Fallecidos", legend={'traceorder':'normal'})
         return html.Div(
             [
                 dbc.Col(
@@ -672,7 +672,7 @@ def render_content(tab):
         figPaisAutoctonos = px.line(
             dengueTotalPais, x="FechaReporte", y="Autoctonos", color="Provincia"
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos autóctonos confirmados"
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos autóctonos confirmados", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -707,7 +707,7 @@ def render_content(tab):
         figPaisImportadod = px.line(
             dengueTotalPais, x="FechaReporte", y="Importados", color="Provincia"
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos importados confirmados"
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos importados confirmados", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -732,7 +732,7 @@ def render_content(tab):
         figPaisEnInv = px.line(
             dengueTotalPais, x="FechaReporte", y="Total en Inv", color="Provincia"
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos en investigación"
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos en investigación", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -756,7 +756,7 @@ def render_content(tab):
             x="FechaReporte",
             y="Total notificados para dengue",
             color="Provincia",
-        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos notificados")
+        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos notificados", legend={'traceorder':'normal'})
         return html.Div(
             [
                 dbc.Col(
@@ -779,7 +779,7 @@ def render_content(tab):
     elif tab == "tab-5":
         figPaisFallecidos = px.line(
             dengueTotalPais, x="FechaReporte", y="AcumFallecidos", color="Provincia"
-        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Fallecidos")
+        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Fallecidos", legend={'traceorder':'normal'})
         return html.Div(
             [
                 dbc.Col(
