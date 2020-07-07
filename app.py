@@ -173,13 +173,13 @@ app.layout = html.Div(
             className="custom-tabs-container",
             children=[
                 dcc.Tab(
-                    label="Incidencia Acumulada",
+                    label="Casos Autóctonos",
                     value="tab-1",
                     className="custom-tab",
                     selected_className="custom-tab--selected",
                 ),
                 dcc.Tab(
-                    label="Casos Autóctonos",
+                    label="Incidencia Acumulada",
                     value="tab-2",
                     className="custom-tab",
                     selected_className="custom-tab--selected",
@@ -357,31 +357,6 @@ app.layout = html.Div(
 @app.callback(Output("tabsProv", "children"), [Input("tabsProvincias", "value")])
 def render_content(tab):
     if tab == "tab-1":
-        figProvinciasIA = px.line(
-            dengueProvincias, x="FechaReporte", y="IA", color="Provincia", height=650
-        ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Incidencia Acumulada", legend={'traceorder':'normal'}
-        )
-        return html.Div(
-            [
-                dbc.Col(
-                    [
-                        html.H4("Incidencia Acumulada de casos autoctónos confirmados"),
-                        html.P(
-                            " Incidencia Acumulada (IA) = (cantidad de casos/población)*100.000",
-                            className="lead",
-                        ),
-                    ]
-                ),
-                dbc.Row(
-                    [
-                        dbc.Col(html.H4(""), md=1),
-                        dbc.Col(dcc.Graph(figure=figProvinciasIA), md=10),
-                    ]
-                ),
-            ]
-        )
-    elif tab == "tab-2":
         figProvinciasAutoctonos = px.line(
             dengueProvincias,
             x="FechaReporte",
@@ -416,6 +391,31 @@ def render_content(tab):
                     [
                         dbc.Col(html.H4(""), md=1),
                         dbc.Col(dcc.Graph(figure=figProvinciasAutoctonos), md=10),
+                    ]
+                ),
+            ]
+        )
+    elif tab == "tab-2":
+        figProvinciasIA = px.line(
+            dengueProvincias, x="FechaReporte", y="IA", color="Provincia", height=650
+        ).update_layout(
+            xaxis_title="Fecha de Reporte", yaxis_title="Incidencia Acumulada", legend={'traceorder':'normal'}
+        )
+        return html.Div(
+            [
+                dbc.Col(
+                    [
+                        html.H4("Incidencia Acumulada de casos autoctónos confirmados"),
+                        html.P(
+                            " Incidencia Acumulada (IA) = (cantidad de casos/población)*100.000",
+                            className="lead",
+                        ),
+                    ]
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(html.H4(""), md=1),
+                        dbc.Col(dcc.Graph(figure=figProvinciasIA), md=10),
                     ]
                 ),
             ]
