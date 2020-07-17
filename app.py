@@ -24,12 +24,12 @@ server = app.server
 colors = {"background": "#111111", "text": "#7FDBFF"}
 
 ####DATOS OPS
-datosOPS = pd.read_csv("data/dengue_Argentina_OPS_2014_2020.csv", encoding = "ISO-8859-1")
+datosOPS = pd.read_csv("data/dengue_Argentina_OPS_2014_2020.csv")
 casosDenguePorAño = datosOPS.iloc[::-1]
 
 
 ###DATOS BOLETINES
-casosDengue = pd.read_csv("data/dengue_casos.csv", encoding = "ISO-8859-1")
+casosDengue = pd.read_csv("data/dengue_casos.csv")
 casosDengueInvertido = casosDengue.iloc[::-1]
 
 ###DATAFRAME CON Pais
@@ -745,9 +745,9 @@ def render_content3(tab):
     if tab == "tab-1":
         figOPSConf = px.line(casosDenguePorAño,x="SE", y="Confirmados", color='Año'
                             ).update_layout(
-            xaxis_title="Semana Epidemiológica",
-            yaxis_title="Casos confirmados",
-        )
+                                            xaxis_title="Semana Epidemiológica",
+                                            yaxis_title="Casos confirmados",
+                                            )
         return html.Div(
             [
                 dbc.Col(
