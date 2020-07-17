@@ -23,40 +23,29 @@ server = app.server
 
 colors = {"background": "#111111", "text": "#7FDBFF"}
 
-# DATOS OPS
-casosDenguePorAño = pd.read_csv("data/dengue_Argentina_OPS_2014_2020.csv")
+####DATOS OPS
+datosOPS = pd.read_csv("data/dengue_Argentina_OPS_2014_2020.csv", encoding = "ISO-8859-1")
+casosDenguePorAño = datosOPS.iloc[::-1]
 
 
-# = datosOPS.
-
-# DATOS BOLETINES
-casosDengue = pd.read_csv("data/dengue_casos.csv")
+###DATOS BOLETINES
+casosDengue = pd.read_csv("data/dengue_casos.csv", encoding = "ISO-8859-1")
 casosDengueInvertido = casosDengue.iloc[::-1]
 
-# DATAFRAME CON Pais
-denguePaisAut = casosDengueInvertido.groupby(
-    ['FechaReporte', 'Pais'], as_index=False)['Autoctonos'].agg('sum')
-denguePaisImp = casosDengueInvertido.groupby(
-    ['FechaReporte', 'Pais'], as_index=False)['Importados'].agg('sum')
-denguePaisInv = casosDengueInvertido.groupby(
-    ['FechaReporte', 'Pais'], as_index=False)['Total en Inv'].agg('sum')
-denguePaisNotif = casosDengueInvertido.groupby(['FechaReporte', 'Pais'], as_index=False)[
-    'Total notificados para dengue'].agg('sum')
-denguePaisFall = casosDengueInvertido.groupby(
-    ['FechaReporte', 'Pais'], as_index=False)['AcumFallecidos'].agg('sum')
+###DATAFRAME CON Pais
+denguePaisAut = casosDengueInvertido.groupby(['FechaReporte','Pais'],as_index=False)['Autoctonos'].agg('sum')
+denguePaisImp = casosDengueInvertido.groupby(['FechaReporte','Pais'],as_index=False)['Importados'].agg('sum')
+denguePaisInv = casosDengueInvertido.groupby(['FechaReporte','Pais'],as_index=False)['Total en Inv'].agg('sum')
+denguePaisNotif = casosDengueInvertido.groupby(['FechaReporte','Pais'],as_index=False)['Total notificados para dengue'].agg('sum')
+denguePaisFall = casosDengueInvertido.groupby(['FechaReporte','Pais'],as_index=False)['AcumFallecidos'].agg('sum')
 
-
-# DATAFRAME CON REGIONES
-dengueRegionesAut = casosDengueInvertido.groupby(
-    ['FechaReporte', 'Region'], as_index=False)['Autoctonos'].agg('sum')
-dengueRegionesImp = casosDengueInvertido.groupby(
-    ['FechaReporte', 'Region'], as_index=False)['Importados'].agg('sum')
-dengueRegionesInv = casosDengueInvertido.groupby(
-    ['FechaReporte', 'Region'], as_index=False)['Total en Inv'].agg('sum')
-dengueRegionesNotif = casosDengueInvertido.groupby(['FechaReporte', 'Region'], as_index=False)[
-    'Total notificados para dengue'].agg('sum')
-dengueRegionesFall = casosDengueInvertido.groupby(
-    ['FechaReporte', 'Region'], as_index=False)['AcumFallecidos'].agg('sum')
+  
+###DATAFRAME CON REGIONES
+dengueRegionesAut = casosDengueInvertido.groupby(['FechaReporte','Region'],as_index=False)['Autoctonos'].agg('sum')
+dengueRegionesImp = casosDengueInvertido.groupby(['FechaReporte','Region'],as_index=False)['Importados'].agg('sum')
+dengueRegionesInv = casosDengueInvertido.groupby(['FechaReporte','Region'],as_index=False)['Total en Inv'].agg('sum')
+dengueRegionesNotif = casosDengueInvertido.groupby(['FechaReporte','Region'],as_index=False)['Total notificados para dengue'].agg('sum')
+dengueRegionesFall = casosDengueInvertido.groupby(['FechaReporte','Region'],as_index=False)['AcumFallecidos'].agg('sum')
 
 # Lista de semanas epidemioligicas boletines
 #semanaEpidem = dengueProvincias["SE"].tolist()
@@ -81,44 +70,43 @@ app.layout = html.Div(
         ),
         dbc.Jumbotron(
             [
-                dbc.Row(
+            dbc.Row(
                     [
-                        dbc.Col(
+                    dbc.Col(
                             [
-                                dbc.Row(
+                            dbc.Row(
                                     [
-                                        html.A(html.Img(src=app.get_asset_url("Logo(Banner).png"),
-                                                        style={
-                                            "width": "90px",
-                                            "padding": "10px",
-                                        },
-                                        ),
-                                            href="http://www.frcu.utn.edu.ar/gibd",
-                                        ),
-                                        html.H1(
-                                            "Grupo de Investigación en Bases de Datos"),
+                                    html.A(html.Img(src=app.get_asset_url("Logo(Banner).png"),
+                                                    style={
+                                                    "width": "90px",
+                                                    "padding": "10px",
+                                                    },
+                                                    ),
+                                                    href="http://www.frcu.utn.edu.ar/gibd",
+                                            ),
+                                    html.H1("Grupo de Investigación en Bases de Datos"),
                                     ],
                                     align="center",
-                                ),
-                                html.P("Este proyecto fue creado con el objetivo de compartir información sobre la evolución de casos de Dengue en Argentina.",
-                                       className="lead",
-                                       ),
-                                html.Hr(className="my-2"),
-                                html.H3("Fuentes de datos"),
-                                html.P(
-                                    [
-                                        html.Li("Datos históricos: Organización Panamericana de la Salud"
-                                                ),
-                                        html.Li("Datos de Argentina: Boletines Integrados de Vigilancia del Ministerio de Salud de la Nación."
-                                                ),
+                                    ),
+                                    html.P("Este proyecto fue creado con el objetivo de compartir información sobre la evolución de casos de Dengue en Argentina.",
+                                    className="lead",
+                                            ),
+                                    html.Hr(className="my-2"),
+                                    html.H3("Fuentes de datos"),
+                                    html.P(
+                                            [
+                                            html.Li("Datos históricos: Organización Panamericana de la Salud"
+                                                    ),
+                                            html.Li("Datos de Argentina: Boletines Integrados de Vigilancia del Ministerio de Salud de la Nación."
+                                                    ),
+                                            ]
+                                            ),
                                     ]
-                                ),
+                                    )
                             ]
-                        )
-                    ]
-                )
-            ]
-        ),
+                    )
+                ]
+            ),
         dbc.Jumbotron(
             [
                 dbc.Row(
@@ -127,8 +115,8 @@ app.layout = html.Div(
                             [
                                 html.H1("Dengue en Argentina"),
                                 html.P("Analisis realizado con datos extraidos de los Boletines Integrados de Vigilancia del Ministerio de Salud de la República Argentina",
-                                       className="lead",
-                                       ),
+                                    className="lead",
+                                ),
                                 html.Hr(className="my-2"),
                                 html.P("", className="lead"),
                             ]
@@ -290,8 +278,7 @@ app.layout = html.Div(
         dbc.Jumbotron(
             id="jumbo",
             children=[
-                html.H1(
-                    "Dengue en Argentina - Comparativa de casos en los últimos años"),
+                html.H1("Dengue en Argentina - Comparativa de casos en los últimos años"),
                 html.P(
                     "Analisis realizado con datos obtenidos de la Organización Panamericana de la Salud",
                     className="lead",
@@ -330,9 +317,9 @@ app.layout = html.Div(
 @app.callback(Output("tabsProv", "children"), [Input("tabsProvincias", "value")])
 def render_content(tab):
     if tab == "tab-1":
-        figProvinciasAutoctonos = px.line(casosDengueInvertido, x="FechaReporte", y="Autoctonos", color="Provincia", height=650,
-                                          ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos autóctonos confirmados", legend={'traceorder': 'normal'}
+        figProvinciasAutoctonos = px.line(casosDengueInvertido,x="FechaReporte",y="Autoctonos",color="Provincia",height=650,
+        ).update_layout(
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos autóctonos confirmados", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -365,15 +352,14 @@ def render_content(tab):
         )
     elif tab == "tab-2":
         figProvinciasIA = px.line(casosDengueInvertido, x="FechaReporte", y="IA", color="Provincia", height=650
-                                  ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Incidencia Acumulada", legend={'traceorder': 'normal'}
+        ).update_layout(
+            xaxis_title="Fecha de Reporte", yaxis_title="Incidencia Acumulada", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
                 dbc.Col(
                     [
-                        html.H4(
-                            "Incidencia Acumulada de casos autoctónos confirmados"),
+                        html.H4("Incidencia Acumulada de casos autoctónos confirmados"),
                         html.P(
                             " Incidencia Acumulada (IA) = (cantidad de casos/población)*100.000",
                             className="lead",
@@ -396,7 +382,7 @@ def render_content(tab):
             color="Provincia",
             height=650,
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos importados confirmados", legend={'traceorder': 'normal'}
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos importados confirmados", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -425,7 +411,7 @@ def render_content(tab):
             color="Provincia",
             height=650,
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos en investigación", legend={'traceorder': 'normal'}
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos en investigación", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -450,7 +436,7 @@ def render_content(tab):
             y="Total notificados para dengue",
             color="Provincia",
             height=650,
-        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos notificados", legend={'traceorder': 'normal'})
+        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos notificados", legend={'traceorder':'normal'})
         return html.Div(
             [
                 dbc.Col(
@@ -465,8 +451,7 @@ def render_content(tab):
                 dbc.Row(
                     [
                         dbc.Col(html.H4(""), md=1),
-                        dbc.Col(
-                            dcc.Graph(figure=figProvinciasNotificados), md=10),
+                        dbc.Col(dcc.Graph(figure=figProvinciasNotificados), md=10),
                     ]
                 ),
             ]
@@ -478,7 +463,7 @@ def render_content(tab):
             y="AcumFallecidos",
             color="Provincia",
             height=650,
-        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Fallecidos", legend={'traceorder': 'normal'})
+        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Fallecidos", legend={'traceorder':'normal'})
         return html.Div(
             [
                 dbc.Col(
@@ -501,12 +486,12 @@ def render_content(tab):
 
 
 @app.callback(Output("tabsReg", "children"), [Input("tabsRegiones", "value")])
-def render_content1(tab):
+def render_content(tab):
     if tab == "tab-1":
-        figRegionAutoctonos = px.line(dengueRegionesAut, x='FechaReporte', y='Autoctonos', color='Region', height=650
-                                      ).update_layout(xaxis={'tickformat': '%y/%m'},
-                                                      xaxis_title="Fecha de Reporte", yaxis_title="Casos autóctonos confirmados",  legend={'traceorder': 'normal'}
-                                                      )
+        figRegionAutoctonos = px.line(dengueRegionesAut, x='FechaReporte',y='Autoctonos',color='Region'
+        ).update_layout(xaxis={'tickformat': '%y/%m'},
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos autóctonos confirmados",  legend={'traceorder':'normal'}
+        )
         return html.Div(
             [
                 dbc.Col(
@@ -537,10 +522,10 @@ def render_content1(tab):
             ]
         )
     elif tab == "tab-2":
-        figRegionImportados = px.line(dengueRegionesImp, x='FechaReporte', y='Importados', color='Region', height=650
-                                      ).update_layout(xaxis={'tickformat': '%y/%m'},
-                                                      xaxis_title="Fecha de Reporte", yaxis_title="Casos importados confirmados", legend={'traceorder': 'normal'}
-                                                      )
+        figRegionImportados = px.line(dengueRegionesImp, x='FechaReporte',y='Importados',color='Region'
+        ).update_layout(xaxis={'tickformat': '%y/%m'},
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos importados confirmados", legend={'traceorder':'normal'}
+        )
         return html.Div(
             [
                 dbc.Col(
@@ -561,9 +546,9 @@ def render_content1(tab):
             ]
         )
     elif tab == "tab-3":
-        figRegionEnInv = px.bar(dengueRegionesInv, x='FechaReporte', y='Total en Inv', color='Region', height=650
-                                ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos en investigación", legend={'traceorder': 'normal'}
+        figRegionEnInv = px.bar(dengueRegionesInv, x='FechaReporte',y='Total en Inv',color='Region'
+        ).update_layout(
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos en investigación", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -582,8 +567,8 @@ def render_content1(tab):
             ]
         )
     elif tab == "tab-4":
-        figRegionNotificados = px.line(dengueRegionesNotif, x='FechaReporte', y='Total notificados para dengue', color='Region', height=650
-                                       ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos notificados", legend={'traceorder': 'normal'})
+        figRegionNotificados = px.line(dengueRegionesNotif, x='FechaReporte',y='Total notificados para dengue',color='Region'
+            ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos notificados", legend={'traceorder':'normal'})
         return html.Div(
             [
                 dbc.Col(
@@ -604,8 +589,8 @@ def render_content1(tab):
             ]
         )
     elif tab == "tab-5":
-        figRegionFallecidos = px.line(dengueRegionesFall, x='FechaReporte', y='AcumFallecidos', color='Region', height=650
-                                      ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Fallecidos", legend={'traceorder': 'normal'})
+        figRegionFallecidos = px.line(dengueRegionesFall, x='FechaReporte',y='AcumFallecidos',color='Region'
+        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Fallecidos", legend={'traceorder':'normal'})
         return html.Div(
             [
                 dbc.Col(
@@ -628,12 +613,12 @@ def render_content1(tab):
 
 
 @app.callback(Output("tabsTotal", "children"), [Input("tabsPais", "value")])
-def render_content2(tab):
+def render_content(tab):
     if tab == "tab-1":
         figPaisAutoctonos = px.line(
-            denguePaisAut, x="FechaReporte", y="Autoctonos", color="Pais", height=650
+            denguePaisAut, x="FechaReporte", y="Autoctonos", color="Pais"
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos autóctonos confirmados", legend={'traceorder': 'normal'}
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos autóctonos confirmados", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -666,9 +651,9 @@ def render_content2(tab):
         )
     elif tab == "tab-2":
         figPaisImportados = px.line(
-            denguePaisImp, x="FechaReporte", y="Importados", color="Pais", height=650
+            denguePaisImp, x="FechaReporte", y="Importados", color="Pais"
         ).update_layout(
-            xaxis_title="Fecha de Reporte", yaxis_title="Casos importados confirmados", legend={'traceorder': 'normal'}
+            xaxis_title="Fecha de Reporte", yaxis_title="Casos importados confirmados", legend={'traceorder':'normal'}
         )
         return html.Div(
             [
@@ -691,15 +676,14 @@ def render_content2(tab):
         )
     elif tab == "tab-3":
         figPaisEnInv = px.bar(
-            denguePaisInv, x="FechaReporte", y="Total en Inv", color="Pais", height=650
-        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos en investigación", legend={'traceorder': 'normal'}
-                        )
+            denguePaisInv, x="FechaReporte", y="Total en Inv", color="Pais"
+        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos en investigación", legend={'traceorder':'normal'}
+        )
         return html.Div(
             [
                 dbc.Col(
                     [
-                        html.H4(
-                            "Total de casos en investigación en Argentina en 2020"),
+                        html.H4("Total de casos en investigación en Argentina en 2020"),
                         html.P("", className="lead"),
                     ]
                 ),
@@ -712,14 +696,13 @@ def render_content2(tab):
             ]
         )
     elif tab == "tab-4":
-        figPaisNotif = px.line(denguePaisNotif, x="FechaReporte", y="Total notificados para dengue", color="Pais", height=650
-                               ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos notificados", legend={'traceorder': 'normal'})
+        figPaisNotif = px.line(denguePaisNotif,x="FechaReporte",y="Total notificados para dengue",color="Pais",
+        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Casos notificados", legend={'traceorder':'normal'})
         return html.Div(
             [
                 dbc.Col(
                     [
-                        html.H4(
-                            "Total de casos notificados en Argentina en 2020"),
+                        html.H4("Total de casos notificados en Argentina en 2020"),
                         html.P(
                             "Casos notificados: Son casos con sospecha de dengue notificados al Sistema Nacional de Vigilancia de la Salud (SNVS 2.0)",
                             className="lead",
@@ -735,14 +718,13 @@ def render_content2(tab):
             ]
         )
     elif tab == "tab-5":
-        figPaisFall = px.line(denguePaisFall, x="FechaReporte", y="AcumFallecidos", color="Pais", height=650
-                              ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Fallecidos", legend={'traceorder': 'normal'})
+        figPaisFall = px.line(denguePaisFall, x="FechaReporte", y="AcumFallecidos", color="Pais"
+        ).update_layout(xaxis_title="Fecha de Reporte", yaxis_title="Fallecidos", legend={'traceorder':'normal'})
         return html.Div(
             [
                 dbc.Col(
                     [
-                        html.H4(
-                            "Total de personas fallecidas en Argentina en 2020"),
+                        html.H4("Total de personas fallecidas en Argentina en 2020"),
                         html.P(
                             "Fallecimientos: personas fallecidas con confirmación de dengue.",
                             className="lead",
@@ -758,11 +740,11 @@ def render_content2(tab):
             ]
         )
 
-
 @app.callback(Output("tabsTotalOPS", "children"), [Input("tabsPaisOPS", "value")])
 def render_content3(tab):
     if tab == "tab-1":
-        figOPSConf = px.line(casosDenguePorAño, x="SE", y="Confirmados", color="Año", height=650).update_layout(
+        figOPSConf = px.line(casosDenguePorAño,x="SE", y="Confirmados", color='Año'
+                            ).update_layout(
             xaxis_title="Semana Epidemiológica",
             yaxis_title="Casos confirmados",
         )
@@ -783,8 +765,11 @@ def render_content3(tab):
             ]
         )
     elif tab == "tab-2":
-        figOPSFall = px.line(casosDenguePorAño, x="SE", y="Muertes", color="Año", height=650).update_layout(
-            xaxis_title="Semana Epidemiológica", yaxis_title="Fallecidos")
+        figOPSFall = px.line(casosDenguePorAño,x="SE", y="Muertes",color="Año"
+                            ).update_layout(
+                                            xaxis_title="Semana Epidemiológica",
+                                            yaxis_title="Fallecidos",
+                                            )
         return html.Div(
             [
                 dbc.Col(
@@ -801,7 +786,6 @@ def render_content3(tab):
                 )
             ]
         )
-
 
 if __name__ == "__main__":
     app.run_server(debug=True)
