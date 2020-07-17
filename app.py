@@ -153,7 +153,7 @@ app.layout = html.Div(
                     dbc.Col([html.H2("Dengue en Argentina - Casos por Región"),
                              html.P(
                                     [
-                                    html.P("En esta sección se presentan las visualizaciones correspondientes a la evolución de casos de dengue para cada región del país. Se visualizan indicadores como la cantidad total de casos notificados, la cantidad total de casos autóctonos confirmados, la incidencia acumulada, la cantidad de casos en investigación y los fallecimientos con diagnóstico de dengue confirmado."),
+                                    html.P("Evolución de casos de dengue para cada región del país. Se presentan indicadores como la cantidad total de casos notificados, la cantidad total de casos autóctonos confirmados, la incidencia acumulada, la cantidad de casos en investigación y los fallecimientos con diagnóstico de dengue confirmado."),
                                     html.P("Los distritos integrantes de cada región son:"),
                                     html.Li("Centro: Buenos Aires, CABA, Córdoba, Entre Ríos, Santa Fe."),
                                     html.Li("Cuyo: Mendoza, San Juan, San Luis."),
