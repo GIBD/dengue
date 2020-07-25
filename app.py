@@ -395,7 +395,7 @@ def render_content(tab):
                 dbc.Col(
                     [
                         html.H4("Incidencia Acumulada de casos autoctónos confirmados"),
-                        tml.P(
+                        html.P(
                             "Incidencia Acumulada (IA) = (cantidad de casos/población)*100.000",
                             className="lead",
                         ),
@@ -533,7 +533,7 @@ def render_content(tab):
 
 
 @app.callback(Output("tabsReg", "children"), [Input("tabsRegiones", "value")])
-def render_content(tab):
+def render_content1(tab):
     if tab == "tab-1":
         figRegionAutoctonos = px.line(
             dengueRegionesAut, x="FechaReporte", y="Autoctonos", color="Region"
@@ -684,7 +684,7 @@ def render_content(tab):
 
 
 @app.callback(Output("tabsTotal", "children"), [Input("tabsPais", "value")])
-def render_content(tab):
+def render_content2(tab):
     if tab == "tab-1":
         figPaisAutoctonos = px.line(
             denguePaisAut, x="FechaReporte", y="Autoctonos", color="Pais"
