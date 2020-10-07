@@ -673,7 +673,8 @@ def tab_mapa_y_tabla(tab):
         ultimaFecha = casosDengue["FechaReporte"].max()
         casosSemanaSeleccionada = casosDengue[casosDengue.SE == maximaSE]
         dataFrameDengue = casosSemanaSeleccionada[["Provincia", "Autoctonos", "IA"]]
-        dataFrameDengue.IA.round()
+        #dataFrameDengue.IA.round()
+        dataFrameDengue.sort_values(by='IA', ascending=False).round(2)
         return html.Div(
             [
                 dbc.Container(
