@@ -118,7 +118,7 @@ app.layout = html.Div(
                     align="center",
                 ),
                 html.P(
-                    "Proyecto que presenta información sobre la evolución de casos de Dengue en Argentina",
+                    "Evolución de casos de Dengue en Argentina",
                     className="lead",
                 ),
                 html.Hr(className="my-2"),
@@ -129,7 +129,7 @@ app.layout = html.Div(
             [
                 html.H1("Dengue en Argentina", className="responsive"),
                 html.P(
-                    "Analisis realizado con datos extraidos de los Boletines Integrados de Vigilancia del Ministerio de Salud de la República Argentina y datos extraídos de la Organización Panamericana de la Salud",
+                    "Fuente: Boletín Integrado de Vigilancia del Ministerio de Salud de la República Argentina. Datos de la Organización Panamericana de la Salud",
                     className="lead",
                 ),
             ]
@@ -143,7 +143,7 @@ app.layout = html.Div(
                             style={"textAlign": "center"},
                         ),
                         html.P(
-                            "Indicadores presentados: total de casos notificados, total de casos autóctonos confirmados, Incidencia Acumulada (casos confirmados cada 100.000 habitantes), cantidad de casos en investigación y fallecimientos por dengue confirmado.",
+                            "Indicadores presentados: Casos Notificados, Casos Autóctonos confirmados, Incidencia Acumulada (Confirmados c/100.000 habitantes), Casos en Investigación y Fallecimientos por dengue confirmado.",
                             className="card-text",
                         ),
                     ]
