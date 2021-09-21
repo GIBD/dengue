@@ -3,6 +3,8 @@
 @author: GIBD
 """
 
+from dash_html_components.S import S
+from dash_html_components.Strong import Strong
 import pandas as pd
 import plotly.express as px
 import dash
@@ -90,49 +92,105 @@ dengueRegionesFall = casosDengueInvertido.groupby(
 
 app.layout = html.Div(
     [
-        dbc.NavbarSimple(
-            children=[
-                # dbc.NavItem(dbc.NavLink("Inicio", href="#")),
-                # dbc.NavItem(dbc.NavLink("Sudamérica", href="#")),
-                # dbc.NavItem(dbc.NavLink("Argentina", href="#")),
-                # dbc.NavItem(dbc.NavLink("Entre Ríos", href="#")),
-            ],
-            brand="Dengue GIBD",
-            brand_href="http://www.frcu.utn.edu.ar/gibd",
-            color="#000B3B",
-            dark=True,
-        ),
-        dbc.Jumbotron(
-            [
-                dbc.Row(
-                    [
-                        html.A(
-                            html.Img(
-                                src=app.get_asset_url("Logo(Banner).png"),
-                                style={"width": "90px", "padding": "10px"},
+        # dbc.NavbarSimple(
+        #     children=[
+        #         # dbc.NavItem(dbc.NavLink("Inicio", href="#")),
+        #         # dbc.NavItem(dbc.NavLink("Sudamérica", href="#")),
+        #         # dbc.NavItem(dbc.NavLink("Argentina", href="#")),
+        #         # dbc.NavItem(dbc.NavLink("Entre Ríos", href="#")),
+        #     ],
+        #     brand="Dengue GIBD",
+        #     brand_href="http://www.frcu.utn.edu.ar/gibd",
+        #     color="#000B3B",
+        #     dark=True,
+        # ),
+        html.Header(
+            dbc.Jumbotron(
+                [
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                html.A(
+                                    html.Img(
+                                        src=app.get_asset_url("LogoUTN(Banner).png"),
+                                        style={"width": "110px"},
+                                    ),
+                                    href="http://www.frcu.utn.edu.ar",
+                                ),
+                                className="utn-header",
                             ),
-                            href="http://www.frcu.utn.edu.ar/gibd",
-                        ),
-                        html.H1("Grupo de Investigación en Bases de Datos"),
-                    ],
-                    align="center",
-                ),
-                html.P(
-                    "Evolución de casos de Dengue en Argentina",
-                    className="lead",
-                ),
-                html.Hr(className="my-2"),
-                dcc.Markdown(infoFuentesDeDatos),
-            ]
-        ),
-        dbc.Jumbotron(
-            [
-                html.H1("Dengue en Argentina", className="responsive"),
-                html.P(
-                    "Fuente: Boletín Integrado de Vigilancia del Ministerio de Salud de la República Argentina. Datos de la Organización Panamericana de la Salud",
-                    className="lead",
-                ),
-            ]
+                            dbc.Col(
+                                html.A(
+                                    html.Img(
+                                        src=app.get_asset_url("Logo(Banner).png"),
+                                        style={"width": "60px"},
+                                    ),
+                                    href="http://www.frcu.utn.edu.ar/gibd",
+                                ),
+                                className="gibd-header",
+                                width=1,
+                            ),
+                            dbc.Col(
+                                html.A(
+                                    html.Img(
+                                        src=app.get_asset_url(
+                                            "logo-bombieri-blanco.png"
+                                        ),
+                                        style={"width": "210px"},
+                                    ),
+                                    href="https://www.bombieri.com.ar/",
+                                ),
+                                className="bombieri-header",
+                            ),
+                        ],
+                        className="header-nav",
+                    ),
+                    dbc.Row(
+                        [
+                            html.H1(
+                                "Grupo de Investigación en Bases de Datos",
+                                className="titulo",
+                            ),
+                            html.H2(
+                                "Evolución de casos de Dengue en Argentina",
+                                className="lead subtitulo",
+                            ),
+                            html.Ul(
+                                [
+                                    html.H3(
+                                        "Fuentes de datos",
+                                        style={
+                                            "font-family": "Roboto",
+                                            "font-style": "italic",
+                                            "font-weight": "normal",
+                                            "font-size": "18px",
+                                            "line-height": "25px",
+                                        },
+                                    ),
+                                    html.Li(
+                                        [
+                                            "Datos históricos: ",
+                                            html.Strong(
+                                                "Organización Panamericana de la Salud"
+                                            ),
+                                        ],
+                                    ),
+                                    html.Li(
+                                        [
+                                            "Datos de Argentina: ",
+                                            html.Strong(
+                                                "Boletines Integrados de Vigilancia del Ministerio de Salud de la Nación"
+                                            ),
+                                        ],
+                                    ),
+                                ],
+                                className="fdatos",
+                            ),
+                        ]
+                    ),
+                ]
+            ),
+            className="header",
         ),
         dbc.Card(
             [
@@ -244,7 +302,9 @@ app.layout = html.Div(
                                         ),
                                         dbc.Collapse(
                                             id="collapse-info-regiones",
-                                            children=[dcc.Markdown(infoRegiones),],
+                                            children=[
+                                                dcc.Markdown(infoRegiones),
+                                            ],
                                         ),
                                         dbc.Tabs(
                                             [
@@ -375,6 +435,72 @@ app.layout = html.Div(
                     no_gutters=True,
                 ),
             ],
+        ),
+        dbc.CardFooter(
+            [
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            html.P(
+                                [
+                                    "Realizado por el ",
+                                    html.Strong(
+                                        "Grupo de Investigación en Bases de Datos de UTN FRCU"
+                                    ),
+                                    " y la empresa de innovación digital ",
+                                    html.Strong("Bombieri."),
+                                ],
+                                className="footer-text",
+                            ),
+                            width=6,
+                        ),
+                        dbc.Col(
+                            [
+                                dbc.Col(
+                                    html.A(
+                                        html.Img(
+                                            src=app.get_asset_url(
+                                                "LogoUTN(Banner).png"
+                                            ),
+                                            style={"width": "130px"},
+                                        ),
+                                        href="http://www.frcu.utn.edu.ar",
+                                    ),
+                                    className="utn-footer",
+                                    width=4,
+                                ),
+                                dbc.Col(
+                                    html.A(
+                                        html.Img(
+                                            src=app.get_asset_url("Logo(Banner).png"),
+                                            style={"width": "70px"},
+                                        ),
+                                        href="http://www.frcu.utn.edu.ar/gibd",
+                                    ),
+                                    className="gibd-footer",
+                                    width=4,
+                                ),
+                                dbc.Col(
+                                    html.A(
+                                        html.Img(
+                                            src=app.get_asset_url(
+                                                "logo-bombieri-blanco.png"
+                                            ),
+                                            style={"width": "260px"},
+                                        ),
+                                        href="https://www.bombieri.com.ar/",
+                                    ),
+                                    className="bombieri-footer",
+                                    width=4,
+                                ),
+                            ],
+                            width=6,
+                            className="footer-logos",
+                        ),
+                    ]
+                )
+            ],
+            className="footer",
         ),
     ]
 )
@@ -673,8 +799,8 @@ def tab_mapa_y_tabla(tab):
         ultimaFecha = casosDengue["FechaReporte"].max()
         casosSemanaSeleccionada = casosDengue[casosDengue.SE == maximaSE]
         dataFrameDengue = casosSemanaSeleccionada[["Provincia", "Autoctonos", "IA"]]
-        #dataFrameDengue.IA.round()
-        dataFrameDengue.sort_values(by='IA', ascending=False).round(2)
+        # dataFrameDengue.IA.round()
+        dataFrameDengue.sort_values(by="IA", ascending=False).round(2)
         return html.Div(
             [
                 dbc.Container(
